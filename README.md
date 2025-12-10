@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ogun State BPMS - Bill Payment Confirmation</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+  /* ---------------- GLOBAL ---------------- */
+  body{
+    margin:0;
+    padding:0;
+    background:#f4f4f4;
+    font-family:'Roboto',Arial,sans-serif;
+    color:#333;
+  }
+
+  .container{
+    max-width:480px;
+    margin:auto;
+    min-height:100vh;
+    background:#fff;
+    box-shadow:0 0 10px rgba(0,0,0,0.08);
+  }
+  
+
+  /* ---------------- HEADER (GREEN APPLIED) ---------------- */
+  .header{
+    display:flex;
+    align-items:center;
+    padding:14px 16px;
+    border-bottom:1px solid #eee;
+    background:#0b6d0b; /* ← green added to header */
+  }
+
+  .header img{
+    width:35px;
+    height:34px;
+    border-radius:50%;
+    margin-right:10px;
+    object-fit:cover;
+    background:#fff; /* makes logo visible */
+  }
+
+  .header-text{
+    font-size:15px;
+    font-weight:900;
+    color:#fff; /* Text changed to white for contrast */
+  }
+
+  .header-home{
+    margin-left:5px;
+    color:#eee;
+    font-size:15px;
+  }
+
+  .header-home::before{
+    content:"|";
+    margin:5 10px;
+    color:#ccc;
+  
+  
+  }
+  
+  
+  
+  /* ---------------- HERO AREA (CLEANED UP) ---------------- */
+  
+  .hero-image-container{
+    text-align:center;
+    padding-right:100px;
+    background:none; 
+  }
+  
+  .hero-image{
+    width: 100%;
+    height: auto;
+    position:relative;
+    margin-top:45px;
+    overflow: hidden;
+  }
+
+  .yellow-shape{
+    display:none; 
+  }
+
+  .hero-building{
+    position: relative; 
+    width: 110%;
+    height: auto;
+    object-fit: cover;
+    border-radius:12px;
+  }
+
+  /* ---------------- BILL DETAILS ---------------- */
+  .details-box{
+    margin:30px;
+    background:#fff;
+    padding:0 30px 45px;
+    border-top:2px solid #0b6d0b;
+    border-radius:12px;
+  }
+  
+
+  .details-box h2{
+    font-size:18px;
+    margin:0;
+    padding:18px 0;
+    font-weight:700;
+    color:#0b6d0b;
+  }
+
+  table{
+    width:100%;
+    border-
+    font-size:18px;
+  }
+
+  td{
+    padding:15px 0;
+    border-bottom:0px solid #eee;
+  }
+
+  .label{color:#444;width:40%;}
+  .value{font-weight:900;text-align:right;}
+
+  .paid-status{
+    color:#0b6d0b;
+    font-weight:900;
+  }
+
+  /* ---------------- PAYMENT METHODS ---------------- */
+  .payment-methods{
+    margin-top:25px;
+    padding-top:20px;
+    border-top:1px solid #eaeaea;
+    text-align:center;
+  }
+
+  .payment-method-row{
+    font-weight:900;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:10px;
+  }
+
+  .payment-separator{
+    margin:0 8px;
+    color:#bbb;
+    font-size:17px;
+  }
+
+  /* ---------------- PAYMENT LOGO STYLING ---------------- */
+  .remita-payment{
+    color:#0b6d0b;
+    font-size:20px;
+    font-weight:900;
+    font-style:italic;
+  }
+
+  .xpresspay-payment{
+    color:#222;
+    font-size:20px;
+    font-weight:700;
+    padding-left:19px;
+    position:relative;
+  }
+
+  .xpresspay-payment::before{
+    content:"❌";
+    position:absolute;
+    left:0;
+    top:-0px;
+    font-size:20px;
+    font-weight:900;
+    color:#0b6d0b;
+  }
+
+  .payment-logos-row{
+    display:flex;
+    justify-content:center;
+    gap:28px;
+  }
+
+  .visa-payment{
+    font-weight:900;
+    font-size:19px;
+    color:#1a1f71;
+  }
+
+  .mastercard-payment{
+    font-weight:900;
+    font-size:19px;
+    color:#eb001b;
+    position:relative;
+    padding-left:22px;
+  }
+
+  .mastercard-payment::before{
+    content:"";
+    position:absolute;
+    left:0;top:2px;
+    width:18px;height:14px;
+    background:
+      radial-gradient(circle at 6px 7px,#eb001b 4px,transparent 4px),
+      radial-gradient(circle at 12px 7px,#f79e1b 4px,transparent 4px);
+  }
+
+  /* ---------------- ABOUT ---------------- */
+  .about-section{
+    background:#e9f5e9;
+    padding:22px;
+    font-size:14px;
+    line-height:1.55;
+    margin-top:30px;
+  }
+
+  .about-section h2{
+    margin-top:0;
+    color:#0b6d0b;
+    font-size:17px;
+  }
+
+  .contact-unit strong{
+    display:block;
+    margin-top:8px;
+    font-weight:900;
+  }
+
+  .contact-unit a{
+    color:#0b6d0b;
+    font-weight:bold;
+    text-decoration:none;
+  }
+
+  /* ---------------- FOOTER ---------------- */
+  footer{
+    background:#0b6d0b;
+    color:#fff;
+    text-align:center;
+    font-size:12px;
+    padding:16px 0;
+    margin-top:10px;
+  }
+
+  footer a{color:#fff;font-weight:bold;}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <header class="header">
+    <img src="https://i.ibb.co/C5NnmGR3/logo-notext.png" alt="logo-notext">
+    <div class="header-text">OGUN STATE GOVERNMENT (BPMS)</div>
+    <span class="header-home">Home</span>
+  </header>
+
+
+  <div class="hero-image-container">
+    <div class="hero-image">
+      
+      <img src="https://i.ibb.co/FqVxt06g/Screenshot-20251203-223609-1.jpg" 
+           alt="Ogun State Attraction" 
+           class="hero-building">
+           
+    </div>
+
+  </div>
+
+
+  <div class="details-box">
+    <h2>Billing Details</h2> 
+        
+    <table>
+      <tr><td class="label">Payment Code</td><td class="value">#0094000044386</td></tr>
+      <tr><td class="label">Bill Description</td><td class="value">Minimum Tax</td></tr>
+      <tr><td class="label">Billed To</td><td class="value">ONUMAH IFEANYI CHRISTIAN</td></tr>
+      <tr><td class="label">Ministry</td><td class="value">Internal Revenue Service IRS</td></tr>
+      <tr><td class="label">Service</td><td class="value">Minimum Tax</td></tr>
+      <tr><td class="label">Bill Date</td><td class="value">3rd October, 2025</td></tr>
+      <tr><td class="label">Bill Number</td><td class="value">#11253033</td></tr>
+      <tr><td class="label">Billed Amount</td><td class="value">N10,100.00</td></tr>
+      <tr><td class="label">Bill Status</td><td class="value paid-status">Paid</td></tr>
+    </table>
+
+    <div class="payment-methods">
+      <div class="payment-method-row">
+        <span class="remita-payment">remita</span>
+        <span class="payment-separator">|</span>
+        <span class="xpresspay-payment">presspay</span>
+      </div>
+
+      <div class="payment-logos-row">
+        <div class="visa-payment">VISA</div>
+        <div class="mastercard-payment">MasterCard</div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="about-section">
+    <h2>About BPMS</h2>
+    The BPMS is a centralized repository for authentic bills and demand notices from all Ministries, Departments and 
+    Agencies of the Ogun State Government. All genuine bills have a unique Payment Code and QR Code for verification. 
+    Receipts are automatically generated and payment can be made online or at bank branches.
+
+    <div class="contact-unit">
+      <strong>Customer Service Unit:</strong>
+      Telephone: 0700 777 5555<br>
+      Email: <a href="mailto:pay@ogunstate.gov.ng">pay@ogunstate.gov.ng</a>
+    </div>
+
+    <div class="contact-unit">
+      <strong>Office:</strong>
+      Ministry of Finance, Ogun State Government, State Secretariat, Oke Mosan, Abeokuta.
+    </div>
+  </div>
+
+  <footer>
+   &copy; 2025 Ogun State Government — All Rights Reserved | <a href="#">Privacy Policy</a>
+  </footer>
+
+</div>  
+
+</body>
+</html>
